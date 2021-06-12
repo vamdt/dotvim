@@ -15,7 +15,7 @@ set smartcase
 set showmatch
 
 let dotvim_root_dir = fnamemodify(expand('<sfile>'), ":p:h")
-let bundle_dir = dotvim_root_dir . "\\bundle" 
+let bundle_dir = $HOME . "\\.cache\\bundle" 
 
 let dein_dir = dotvim_root_dir . "\\dein.vim"
 
@@ -40,7 +40,8 @@ call dein#add("tpope/vim-fugitive")
 call dein#add("tpope/vim-surround")
 "call dein#add("airblade/vim-gitgutter")
 call dein#add("junegunn/fzf.vim")
-"call dein#add("fatih/vim-go.vim")
+call dein#add("liuchengxu/vim-clap")
+call dein#add("fatih/vim-go")
 
 call dein#end()
 
