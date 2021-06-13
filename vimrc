@@ -121,3 +121,6 @@ nnoremap <silent><buffer><expr> <C-g>  defx#do_action('print')
 nnoremap <silent><buffer><expr> cd  defx#do_action('change_vim_cwd')
 endfunction
 
+" vim-go 
+autocmd FileType go nmap <leader>t  <Plug>(go-test)
+autocmd FileType go nmap <leader>b  <Plug>(go-build)
