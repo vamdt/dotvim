@@ -15,6 +15,16 @@ echo dein_dir
 
 let &rtp .= "," . dein_dir
 
+"go 
+let g:go_fmt_command = "goimports"
+let g:go_def_mode = "godef"
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
+
 " dein plugin {{{
 
 call dein#begin(bundle_dir)
@@ -55,6 +65,7 @@ set guicursor=
 set background=light
 colorscheme solarized
 set cmdheight=2
+set autowrite
 
 " encoding
 set encoding=utf-8
@@ -71,6 +82,11 @@ set statusline+=\ \|\
 set statusline+=%y:%{&ff}:%{&fenc!=''?&fenc:&enc}:%L
 set statusline+=%=
 set statusline+=\ %l,%c\ %P
+
+let mapleader="\<Space>"
+inoremap jk <Esc>
+vnoremap jk <Esc>
+onoremap jk <Esc>
 
 "defx
 let g:python3_host_prog = "/usr/local/bin/python3.8"
@@ -120,23 +136,35 @@ nnoremap <silent><buffer><expr> cd  defx#do_action('change_vim_cwd')
 endfunction
 
 " vim-go 
+set updatetime=300
+let g:go_auto_type_info = 1
 autocmd FileType go nmap <leader>t  <Plug>(go-test)
 autocmd FileType go nmap <leader>b  <Plug>(go-build)
+autocmd FileType go nmap <leader>r  <Plug>(go-run)
+autocmd FileType go nmap <leader>c  <Plug>(go-coverage-toggle)
+autocmd FileType go nmap <Leader>i <Plug>(go-info)
+autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
+autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
+autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
 
 " coc
 "
 let g:coc_global_extensions = ['coc-snippets', 'coc-python', 'coc-json']
 
-inoremap <silent><expr> <TAB> pumvisible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ <SID>check_back_space() ? "\<TAB>" : coc#refresh()
-
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
-	let col = col('.') - 1
-	return ! col || getline('.')[col - 1] =~? '\s'
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 augroup user_plugin_coc
 	autocmd!
