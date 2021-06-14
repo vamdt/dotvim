@@ -6,6 +6,7 @@ set incsearch
 set ignorecase
 set smartcase
 set showmatch
+set so=6
 
 let dotvim_root_dir = fnamemodify(expand('<sfile>'), ":p:h")
 let bundle_dir = $HOME . "/.cache/bundle" 
@@ -37,6 +38,7 @@ endif
 call dein#add("Shougo/dein.vim")
 
 call dein#add("wsdjeg/dein-ui.vim")
+call dein#add("jiangmiao/auto-pairs")
 call dein#add("liuchengxu/vim-which-key")
 call dein#add("altercation/vim-colors-solarized")
 call dein#add("neoclide/coc.nvim")
@@ -87,6 +89,9 @@ let mapleader="\<Space>"
 inoremap jk <Esc>
 vnoremap jk <Esc>
 onoremap jk <Esc>
+
+" vim-clap
+nnoremap <silent><nowait> <leader>j :Clap files<CR>
 
 "defx
 let g:python3_host_prog = "/usr/local/bin/python3.8"
