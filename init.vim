@@ -68,6 +68,7 @@ set background=light
 colorscheme solarized
 set cmdheight=2
 set autowrite
+set cursorline
 
 " encoding
 set encoding=utf-8
