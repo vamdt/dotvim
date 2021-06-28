@@ -69,6 +69,7 @@ colorscheme solarized
 set cmdheight=2
 set autowrite
 set cursorline
+set showtabline=2
 
 " encoding
 set encoding=utf-8
@@ -91,6 +92,18 @@ inoremap jk <Esc>
 vnoremap jk <Esc>
 onoremap jk <Esc>
 
+" Go to tab by number
+noremap <leader>1 1gt
+noremap <leader>2 2gt
+noremap <leader>3 3gt
+noremap <leader>4 4gt
+noremap <leader>5 5gt
+noremap <leader>6 6gt
+noremap <leader>7 7gt
+noremap <leader>8 8gt
+noremap <leader>9 9gt
+noremap <leader>0 :tablast<cr>
+
 " vim-clap
 nnoremap <silent><nowait> <leader>j :Clap files<CR>
 
@@ -104,16 +117,21 @@ call defx#custom#option('_', {
       \ 'show_ignored_files': 0,
       \ 'toggle': 1,
       \ })
+nnoremap <silent> <Leader>e :Defx<CR>
 
 autocmd FileType defx call s:defx_my_settings()
 function! s:defx_my_settings() abort
+	setl nospell
+	setl nonumber
 " Define mappings
-nnoremap <silent><buffer><expr> <CR>  defx#do_action('drop')
+nnoremap <silent><buffer><expr> <CR> defx#is_directory() ? defx#do_action('open_or_close_tree') : defx#do_action('drop')
 nnoremap <silent><buffer><expr> c  defx#do_action('copy')
 nnoremap <silent><buffer><expr> m  defx#do_action('move')
 nnoremap <silent><buffer><expr> p  defx#do_action('paste')
 nnoremap <silent><buffer><expr> l  defx#do_action('open_or_close_tree')
-nnoremap <silent><buffer><expr> E  defx#do_action('open', 'vsplit')
+nnoremap <silent><buffer><expr> s  defx#do_action('drop', 'split')
+nnoremap <silent><buffer><expr> v  defx#do_action('drop', 'vsplit')
+nnoremap <silent><buffer><expr> t  defx#do_action('drop', 'tabe')
 nnoremap <silent><buffer><expr> P  defx#do_action('preview')
 nnoremap <silent><buffer><expr> o  defx#do_action('open_tree', 'toggle')
 nnoremap <silent><buffer><expr> K  defx#do_action('new_directory')
