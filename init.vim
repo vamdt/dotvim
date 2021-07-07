@@ -42,6 +42,7 @@ call dein#add("jiangmiao/auto-pairs")
 call dein#add("liuchengxu/vim-which-key")
 call dein#add("altercation/vim-colors-solarized")
 call dein#add("neoclide/coc.nvim")
+call dein#add("honza/vim-snippets")
 call dein#add("tpope/vim-fugitive")
 call dein#add("tpope/vim-surround")
 "call dein#add("airblade/vim-gitgutter")
@@ -50,6 +51,7 @@ call dein#add("liuchengxu/vim-clap")
 call dein#add("fatih/vim-go")
 call dein#add('Shougo/defx.nvim')
 call dein#add('ryanoasis/vim-devicons')
+call dein#add('junegunn/vim-easy-align')
 
 call dein#end()
 
@@ -106,6 +108,10 @@ noremap <leader>0 :tablast<cr>
 
 " vim-clap
 nnoremap <silent><nowait> <leader>j :Clap files<CR>
+
+" vim easy align
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 
 "defx
 let g:python3_host_prog = "/usr/local/bin/python3.8"
