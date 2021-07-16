@@ -6,7 +6,7 @@ set incsearch
 set ignorecase
 set smartcase
 set showmatch
-set so=6
+set scrolloff=6
 
 let dotvim_root_dir = fnamemodify(expand('<sfile>'), ":p:h")
 let bundle_dir = $HOME . "/.cache/bundle" 
@@ -62,7 +62,7 @@ endif
 " dein plugin }}}
 
 " set apperance
-syntax on
+syntax enable
 set number
 set showcmd
 set guicursor=
@@ -72,6 +72,9 @@ set cmdheight=2
 set autowrite
 set cursorline
 set showtabline=2
+set splitright " 新分隔窗口在右边
+set splitbelow " 新分隔窗口在左边
+set showmatch "短暂回显匹配括号
 
 " encoding
 set encoding=utf-8
