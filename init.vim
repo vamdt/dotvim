@@ -52,6 +52,7 @@ call dein#add("fatih/vim-go")
 call dein#add('Shougo/defx.nvim')
 call dein#add('ryanoasis/vim-devicons')
 call dein#add('junegunn/vim-easy-align')
+call dein#add('rust-lang/rust.vim')
 
 call dein#end()
 
