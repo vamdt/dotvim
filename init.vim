@@ -8,6 +8,9 @@ set smartcase
 set showmatch
 set scrolloff=6
 
+"fold
+set foldmethod=marker
+
 let dotvim_root_dir = fnamemodify(expand('<sfile>'), ":p:h")
 let bundle_dir = $HOME . "/.cache/bundle" 
 
@@ -67,7 +70,7 @@ syntax enable
 set number
 set showcmd
 set guicursor=
-set background=light
+set background=dark
 colorscheme solarized
 set cmdheight=2
 set autowrite
@@ -112,6 +115,7 @@ noremap <leader>0 :tablast<cr>
 
 " vim-clap
 nnoremap <silent><nowait> <leader>j :Clap files<CR>
+let g:clap_theme = 'solarized_dark'
 
 " vim easy align
 xmap ga <Plug>(EasyAlign)
