@@ -9,7 +9,8 @@ set showmatch
 set scrolloff=6
 
 "fold
-set foldmethod=marker
+"set foldmethod=marker
+set foldmethod=syntax
 
 let dotvim_root_dir = fnamemodify(expand('<sfile>'), ":p:h")
 let bundle_dir = $HOME . "/.cache/bundle" 
@@ -115,7 +116,7 @@ noremap <leader>0 :tablast<cr>
 
 " vim-clap
 nnoremap <silent><nowait> <leader>j :Clap files<CR>
-let g:clap_theme = 'solarized_dark'
+let g:clap_theme = 'material_design_dark'
 
 " vim easy align
 xmap ga <Plug>(EasyAlign)
