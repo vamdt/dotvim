@@ -134,7 +134,7 @@ call defx#custom#option('_', {
       \ 'show_ignored_files': 0,
       \ 'toggle': 1,
       \ })
-nnoremap <silent> <Leader>e :Defx<CR>
+nnoremap <silent> <Leader>e :Defx -columns=indent:icons:filename:type<CR>
 
 autocmd FileType defx call s:defx_my_settings()
 function! s:defx_my_settings() abort
