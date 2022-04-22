@@ -11,6 +11,7 @@ set scrolloff=6
 "fold
 "set foldmethod=marker
 set foldmethod=syntax
+set foldnestmax=1
 
 let dotvim_root_dir = fnamemodify(expand('<sfile>'), ":p:h")
 let bundle_dir = $HOME . "/.cache/bundle" 
@@ -28,6 +29,7 @@ let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
+let g:go_fmt_experimental = 1
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 
 " dein plugin {{{
@@ -49,12 +51,12 @@ call dein#add("neoclide/coc.nvim")
 call dein#add("honza/vim-snippets")
 call dein#add("tpope/vim-fugitive")
 call dein#add("tpope/vim-surround")
-"call dein#add("airblade/vim-gitgutter")
+call dein#add("airblade/vim-gitgutter")
 call dein#add("junegunn/fzf.vim")
 call dein#add("liuchengxu/vim-clap")
 call dein#add("fatih/vim-go")
 call dein#add('Shougo/defx.nvim')
-call dein#add('ryanoasis/vim-devicons')
+call dein#add('kristijanhusak/defx-icons')
 call dein#add('junegunn/vim-easy-align')
 call dein#add('rust-lang/rust.vim')
 
@@ -152,8 +154,7 @@ nnoremap <silent><buffer><expr> o  defx#do_action('open_tree', 'toggle')
 nnoremap <silent><buffer><expr> K  defx#do_action('new_directory')
 nnoremap <silent><buffer><expr> N  defx#do_action('new_file')
 nnoremap <silent><buffer><expr> M  defx#do_action('new_multiple_files')
-nnoremap <silent><buffer><expr> C  defx#do_action('toggle_columns',
-		\                'mark:indent:icon:filename:type:size:time')
+nnoremap <silent><buffer><expr> C  defx#do_action('toggle_columns', 'mark:indent:icon:filename:type:size:time')
 nnoremap <silent><buffer><expr> S  defx#do_action('toggle_sort', 'time')
 nnoremap <silent><buffer><expr> d  defx#do_action('remove')
 nnoremap <silent><buffer><expr> r  defx#do_action('rename')
