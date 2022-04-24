@@ -53,12 +53,14 @@ call dein#add("tpope/vim-fugitive")
 call dein#add("tpope/vim-surround")
 call dein#add("airblade/vim-gitgutter")
 call dein#add("junegunn/fzf.vim")
-call dein#add("liuchengxu/vim-clap")
 call dein#add("fatih/vim-go")
 call dein#add('Shougo/defx.nvim')
 call dein#add('kristijanhusak/defx-icons')
 call dein#add('junegunn/vim-easy-align')
 call dein#add('rust-lang/rust.vim')
+call dein#add('ibhagwan/fzf-lua', {'branch': 'main'})
+call dein#add('kyazdani42/nvim-web-devicons')
+
 
 call dein#end()
 
@@ -116,9 +118,9 @@ noremap <leader>8 8gt
 noremap <leader>9 9gt
 noremap <leader>0 :tablast<cr>
 
-" vim-clap
-nnoremap <silent><nowait> <leader>j :Clap files<CR>
-let g:clap_theme = 'material_design_dark'
+" fzf-lua
+nnoremap <silent><nowait> <leader>j :lua require('fzf-lua').files()<CR>
+nnoremap <silent><nowait> <leader>k :lua require('fzf-lua').buffers()<CR>
 
 " vim easy align
 xmap ga <Plug>(EasyAlign)
