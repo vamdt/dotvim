@@ -60,6 +60,8 @@ call dein#add('junegunn/vim-easy-align')
 call dein#add('rust-lang/rust.vim')
 call dein#add('ibhagwan/fzf-lua', {'branch': 'main'})
 call dein#add('kyazdani42/nvim-web-devicons')
+call dein#add('numToStr/FTerm.nvim')
+"call dein#add('github/copilot.vim')
 
 
 call dein#end()
@@ -105,6 +107,11 @@ let mapleader="\<Space>"
 inoremap jk <Esc>
 vnoremap jk <Esc>
 onoremap jk <Esc>
+onoremap j gj
+onoremap k gk
+nnoremap j gj
+nnoremap k gk
+
 
 " Go to tab by number
 noremap <leader>1 1gt
@@ -150,7 +157,7 @@ nnoremap <silent><buffer><expr> p  defx#do_action('paste')
 nnoremap <silent><buffer><expr> l  defx#do_action('open_or_close_tree')
 nnoremap <silent><buffer><expr> s  defx#do_action('drop', 'split')
 nnoremap <silent><buffer><expr> v  defx#do_action('drop', 'vsplit')
-nnoremap <silent><buffer><expr> t  defx#do_action('drop', 'tabe')
+nnoremap <silent><buffer><expr> t  defx#do_action('open', 'tabe')
 nnoremap <silent><buffer><expr> P  defx#do_action('preview')
 nnoremap <silent><buffer><expr> o  defx#do_action('open_tree', 'toggle')
 nnoremap <silent><buffer><expr> K  defx#do_action('new_directory')
@@ -254,3 +261,9 @@ function! s:show_documentation()
 		let l:found = CocAction('doHover')
 	endif
 endfunction
+
+
+" term
+nnoremap <silent><nowait> <A-i> :lua require("FTerm").toggle()<CR>
+tnoremap <silent><nowait> <A-i> <C-\><C-n>:lua require("FTerm").toggle()<CR>
+
