@@ -1,7 +1,9 @@
 return require('packer').startup(function()
   use 'wbthomason/packer.nvim'
   use 'altercation/vim-colors-solarized'
-  use 'neoclide/coc.nvim'
+  use {
+	  'neoclide/coc.nvim', branch= 'release'
+  }
   use 'honza/vim-snippets'
   use 'tpope/vim-fugitive'
   use 'airblade/vim-gitgutter'

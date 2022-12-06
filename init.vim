@@ -99,7 +99,7 @@ set fencs=ucs-bom,utf-8,gb18030,gbk,gb2312,cp936,big5,euc-jp,latin1
 set laststatus=2
 set statusline =[%n]\ %f%h%w%m%r
 set statusline+=\ \|\  
-set statusline+=%{fugitive#head()!=''?''.fugitive#head().'':''}
+"set statusline+=%{fugitive#head()!=''?''.fugitive#head().'':''}
 set statusline+=\ \|\  
 set statusline+=%y:%{&ff}:%{&fenc!=''?&fenc:&enc}:%L
 set statusline+=%=
@@ -167,7 +167,7 @@ autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
 
 " coc
 "
-let g:coc_global_extensions = ['coc-snippets', 'coc-python', 'coc-json']
+let g:coc_global_extensions = ['coc-go', 'coc-python', 'coc-json']
 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
