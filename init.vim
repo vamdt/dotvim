@@ -61,7 +61,6 @@ set fencs=ucs-bom,utf-8,gb18030,gbk,gb2312,cp936,big5,euc-jp,latin1
 set laststatus=2
 set statusline =[%n]\ %f%h%w%m%r
 set statusline+=\ \|\  
-"set statusline+=%{fugitive#head()!=''?''.fugitive#head().'':''}
 set statusline+=\ \|\  
 set statusline+=%y:%{&ff}:%{&fenc!=''?&fenc:&enc}:%L
 set statusline+=%=
@@ -166,37 +165,38 @@ autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
 let g:coc_global_extensions = ['coc-go', 'coc-python', 'coc-json']
 
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>coc_check_back_space() ? "\<TAB>" :
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackSpace() ? "\<TAB>" :
       \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
-function! s:coc_check_back_space() abort
+function! CheckBackSpace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
 
 augroup user_plugin_coc
 	autocmd!
-	autocmd CompleteDone * if pumvisible() == 0 | pclose | endif
+	autocmd CompleteDone * if coc#pum#visible() == 0 | pclose | endif
 augroup END
 
 " use <c-space>for trigger completion
 inoremap <silent><expr> <C-space> coc#refresh()
 
 " Movement within 'ins-completion-menu'
-imap <expr><C-j>   pumvisible() ? "\<Down>" : "\<C-j>"
-imap <expr><C-k>   pumvisible() ? "\<Up>" : "\<C-k>"
+imap <expr><C-j>   coc#pum#visible() ? "\<Down>" : "\<C-j>"
+imap <expr><C-k>   coc#pum#visible() ? "\<Up>" : "\<C-k>"
+
 
 " Scroll pages in menu
-inoremap <expr><C-f> pumvisible() ? "\<PageDown>" : "\<Right>"
-inoremap <expr><C-b> pumvisible() ? "\<PageUp>" : "\<Left>"
-imap     <expr><C-d> pumvisible() ? "\<PageDown>" : "\<C-d>"
-imap     <expr><C-u> pumvisible() ? "\<PageUp>" : "\<C-u>"
+inoremap <expr><C-f> coc#pum#visible() ? "\<PageDown>" : "\<Right>"
+inoremap <expr><C-b> coc#pum#visible() ? "\<PageUp>" : "\<Left>"
+imap     <expr><C-d> coc#pum#visible() ? "\<PageDown>" : "\<C-d>"
+imap     <expr><C-u> coc#pum#visible() ? "\<PageUp>" : "\<C-u>"
 
 " Use `[c` and `]c` to navigate diagnostics
 nmap <silent> [c <Plug>(coc-diagnostic-prev)
@@ -226,6 +226,12 @@ function! s:show_documentation()
 		let l:found = CocAction('doHover')
 	endif
 endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
 
 
 " term
