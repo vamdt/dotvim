@@ -11,6 +11,7 @@ return require('packer').startup(function()
   use 'tpope/vim-fugitive'
   use 'airblade/vim-gitgutter'
   use 'Shougo/defx.nvim'
+  use 'fatih/vim-go'
   use 'kristijanhusak/defx-icons'
   use 'junegunn/vim-easy-align'
   use 'ibhagwan/fzf-lua'
