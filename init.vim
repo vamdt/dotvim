@@ -47,6 +47,9 @@ set cmdheight=2
 set autowrite
 set cursorline
 set showtabline=2
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 set splitright " 新分隔窗口在右边
 set splitbelow " 新分隔窗口在左边
 set showmatch "短暂回显匹配括号

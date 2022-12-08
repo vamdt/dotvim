@@ -10,8 +10,6 @@ return require('packer').startup(function()
   use 'honza/vim-snippets'
   use 'tpope/vim-fugitive'
   use 'airblade/vim-gitgutter'
-  -- use 'junegunn/fzf.vim'
-  use 'fatih/vim-go'
   use 'Shougo/defx.nvim'
   use 'kristijanhusak/defx-icons'
   use 'junegunn/vim-easy-align'
@@ -19,4 +17,9 @@ return require('packer').startup(function()
  
   use 'kyazdani42/nvim-web-devicons'
   use 'numToStr/FTerm.nvim'
+  use {'numToStr/Comment.nvim',
+    config = function()
+        require('Comment').setup()
+    end
+  }
 end)
