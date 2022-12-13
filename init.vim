@@ -91,6 +91,8 @@ noremap <leader>8 8gt
 noremap <leader>9 9gt
 noremap <leader>0 :tablast<cr>
 
+noremap <silent><nowait> <leader>b :term glow %<CR>
+
 " fzf-lua
 nnoremap <silent><nowait> <leader>j :lua require('fzf-lua').files()<CR>
 nnoremap <silent><nowait> <leader>k :lua require('fzf-lua').buffers()<CR>
