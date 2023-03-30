@@ -102,7 +102,7 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 "defx
-let g:python3_host_prog = "/usr/bin/python3.7"
+let g:python3_host_prog = "/usr/bin/python3.8"
 call defx#custom#option('_', {
       \ 'resume': 0,
       \ 'winwidth': 30,
